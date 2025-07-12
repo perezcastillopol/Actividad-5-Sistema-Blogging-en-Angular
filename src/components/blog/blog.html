@@ -1,4 +1,4 @@
-<form class="post-form" (ngSubmit)="submit()">
+<div class="post-form">
   <div class="form-group">
     <label class="form-label" for="title">Título</label>
     <input class="form-input" type="text" name="title" id="title" placeholder="Post" [(ngModel)]="newPost.title" required>
@@ -15,8 +15,8 @@
     <label class="form-label" for="date">Fecha</label>
     <input class="form-input" type="date" name="date" id="date" [(ngModel)]="newPost.date" required>
   </div>
-  <button class="submit-btn" type="submit">Publicar</button>
-</form>
+  <button class="submit-btn" (click)="submit()">Publicar</button>
+</div>
 
 <section class="posts-list">
   @for (post of posts; track post.id) {
