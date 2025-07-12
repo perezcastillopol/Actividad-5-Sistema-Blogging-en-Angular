@@ -1,1 +1,8 @@
-<p>blog works!</p>
+@for (post of posts; track post.id) {
+  <article>
+    <h2>{{ post.title }}</h2>
+    <img [src]="post.urlImage" [alt]="post.title">
+    <p>{{ post.body }}</p>
+    <p>{{ post.date | date:'dd/MM/yyyy' }}</p>
+  </article>
+}
