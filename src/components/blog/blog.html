@@ -1,3 +1,23 @@
+<form (ngSubmit)="submit()">
+  <div>
+    <label for="title">Título</label>
+    <input type="text" name="title" id="title" placeholder="Post" [(ngModel)]="newPost.title" required>
+  </div>
+  <div>
+    <label for="urlImage">Url de la imagen</label>
+    <input type="url" name="urlImage" id="urlImage" placeholder="https://picsum.photos/500/300" [(ngModel)]="newPost.urlImage" required>
+  </div>
+  <div>
+    <label for="body">Descripción</label>
+    <textarea name="body" id="body" placeholder="Lorem ipsum dolor sit amet" [(ngModel)]="newPost.body" required></textarea>
+  </div>
+  <div>
+    <label for="date">Fecha</label>
+    <input type="date" name="date" id="date" [(ngModel)]="newPost.date" required>
+  </div>
+  <button type="submit">Publicar</button>
+</form>
+
 @for (post of posts; track post.id) {
   <article>
     <h2>{{ post.title }}</h2>

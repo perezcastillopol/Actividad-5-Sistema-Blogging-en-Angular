@@ -1,11 +1,13 @@
 import {Component, OnInit} from '@angular/core';
 import {BlogPost} from '../../interfaces/blog-post';
 import {DatePipe} from '@angular/common';
+import {FormsModule} from '@angular/forms';
 
 @Component({
   selector: 'app-blog',
   imports: [
-    DatePipe
+    DatePipe,
+    FormsModule
   ],
   templateUrl: './blog.html',
   styleUrl: './blog.css'
@@ -13,13 +15,14 @@ import {DatePipe} from '@angular/common';
 export class Blog implements OnInit {
   posts: BlogPost[] =  [];
   currentNewId = 3;
+  newPost: BlogPost = this.createEmptyPost();
 
 
   ngOnInit(): void {
     this.posts = [
       {
         id: 1,
-        title: 'Noticia random 1',
+        title: 'Publicación random 1',
         urlImage: 'https://picsum.photos/500/300',
         body: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.' +
           ' Mauris dapibus sapien id volutpat sollicitudin. In ipsum neque, placerat et sapien luctus, aliquam finibus ex. ' +
@@ -28,11 +31,25 @@ export class Blog implements OnInit {
       },
       {
         id: 2,
-        title: 'Noticia random 2',
+        title: 'Publicación random 2',
         urlImage: 'https://picsum.photos/500/300',
         body: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris dapibus sapien id volutpat sollicitudin.',
         date: new Date('2025-04-01')
       }
-    ]
+    ];
+  }
+
+  createEmptyPost(): BlogPost {
+    return {
+      id: this.currentNewId++,
+      title: '',
+      urlImage: '',
+      body: '',
+      date: new Date()
+    };
+  }
+
+  submit() {
+    console.log(this.newPost);
   }
 }
