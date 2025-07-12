@@ -1,13 +1,13 @@
 import {Component, OnInit} from '@angular/core';
 import {BlogPost} from '../../interfaces/blog-post';
-import {DatePipe} from '@angular/common';
 import {FormsModule} from '@angular/forms';
+import {PostCard} from '../post-card/post-card';
 
 @Component({
   selector: 'app-blog',
   imports: [
-    DatePipe,
-    FormsModule
+    FormsModule,
+    PostCard
   ],
   templateUrl: './blog.html',
   styleUrl: './blog.css'
