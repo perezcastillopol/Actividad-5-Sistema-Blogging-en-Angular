@@ -3,5 +3,5 @@ export interface BlogPost {
   title: string;
   urlImage: string;
   body: string;
-  date: Date;
+  date: Date | null;
 }

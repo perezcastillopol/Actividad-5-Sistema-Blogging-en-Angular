@@ -45,11 +45,31 @@ export class Blog implements OnInit {
       title: '',
       urlImage: '',
       body: '',
-      date: new Date()
+      date: null
     };
   }
 
   submit() {
-    console.log(this.newPost);
+    if (
+      !this.newPost.title.trim() ||
+      !this.newPost.urlImage.trim() ||
+      !this.newPost.body.trim() ||
+      !this.newPost.date ||
+      !this.isValidUrl(this.newPost.urlImage)
+    ) {
+      alert('Por favor, completa todos los campos correctamente. Asegúrate de que la URL sea válida.');
+      return;
+    }
+    this.posts.push(this.newPost);
+    this.newPost = this.createEmptyPost();
+  }
+
+  isValidUrl(url: string): boolean {
+    try {
+      new URL(url);
+      return true;
+    } catch (_) {
+      return false;
+    }
   }
 }
