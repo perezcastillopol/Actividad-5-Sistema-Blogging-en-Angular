@@ -1,28 +1,32 @@
-<form (ngSubmit)="submit()">
-  <div>
-    <label for="title">Título</label>
-    <input type="text" name="title" id="title" placeholder="Post" [(ngModel)]="newPost.title" required>
+<form class="post-form" (ngSubmit)="submit()">
+  <div class="form-group">
+    <label class="form-label" for="title">Título</label>
+    <input class="form-input" type="text" name="title" id="title" placeholder="Post" [(ngModel)]="newPost.title" required>
   </div>
-  <div>
-    <label for="urlImage">Url de la imagen</label>
-    <input type="url" name="urlImage" id="urlImage" placeholder="https://picsum.photos/500/300" [(ngModel)]="newPost.urlImage" required>
+  <div class="form-group">
+    <label class="form-label" for="urlImage">Url de la imagen</label>
+    <input class="form-input" type="url" name="urlImage" id="urlImage" placeholder="https://picsum.photos/500/300" [(ngModel)]="newPost.urlImage" required>
   </div>
-  <div>
-    <label for="body">Descripción</label>
-    <textarea name="body" id="body" placeholder="Lorem ipsum dolor sit amet" [(ngModel)]="newPost.body" required></textarea>
+  <div class="form-group">
+    <label class="form-label" for="body">Descripción</label>
+    <textarea class="form-input form-textarea" name="body" id="body" placeholder="Lorem ipsum dolor sit amet" [(ngModel)]="newPost.body" required></textarea>
   </div>
-  <div>
-    <label for="date">Fecha</label>
-    <input type="date" name="date" id="date" [(ngModel)]="newPost.date" required>
+  <div class="form-group">
+    <label class="form-label" for="date">Fecha</label>
+    <input class="form-input" type="date" name="date" id="date" [(ngModel)]="newPost.date" required>
   </div>
-  <button type="submit">Publicar</button>
+  <button class="submit-btn" type="submit">Publicar</button>
 </form>
 
-@for (post of posts; track post.id) {
-  <article>
-    <h2>{{ post.title }}</h2>
-    <img [src]="post.urlImage" [alt]="post.title">
-    <p>{{ post.body }}</p>
-    <p>{{ post.date | date:'dd/MM/yyyy' }}</p>
-  </article>
-}
+<section class="posts-list">
+  @for (post of posts; track post.id) {
+    <article class="post-card">
+      <h2>{{ post.title }}</h2>
+      <div class="post-body">
+        <img [src]="post.urlImage" [alt]="post.title">
+        <p>{{ post.body }}</p>
+      </div>
+      <p class="post-date">{{ post.date | date:'dd/MM/yyyy' }}</p>
+    </article>
+  }
+</section>
